@@ -1,103 +1,100 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Navbar from '@/components/Keren/Navbar'
+import { SmoothCursor } from '@/components/ui/smooth-cursor'
+import React, { useEffect, useState } from 'react'
+import { SpinningText } from '@/components/magicui/spinning-text'
+import { LineShadowText } from "@/components/magicui/line-shadow-text"
+import { useTheme } from "next-themes"
+import { TypingAnimation } from '@/components/magicui/typing-animation'
+import { WordRotate } from '@/components/magicui/word-rotate'
+import { Particles } from "@/components/magicui/particles"
+
+export default function page() {
+  const { resolvedTheme } = useTheme()
+  const shadowColor = resolvedTheme === "dark" ? "white" : "black"
+  const [color, setColor] = useState("#ffffff")
+
+  useEffect(() => {
+    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000")
+  }, [resolvedTheme])
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className='relative scroll-smooth'> 
+      <SmoothCursor/>
+      <Navbar/>
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={color}
+        refresh
+      />
+      <div className='w-full min-h-screen flex items-center p-4 sm:p-8 md:p-12 lg:p-16'>
+        <div className='gap-10 w-full flex flex-col lg:flex-row justify-center items-center p-8 sm:p-6 md:p-8 lg:p-10 mt-[-150px]'>
+          <div className='flex flex-col items-center'>
+                      <div className='w-60 h-60 lg:w-60 lg:h-60 rounded-full animate-[spin_25s_linear_infinite] hover:animate-[spin_25s_linear_infinite]'>
+                        <img src="/Profile.jpg" alt="Rasya Iskandar" className="w-full h-full object-cover rounded-full"/>
+                      </div>            
+            <div className='mt-[-120px]'>
+            <SpinningText>Dicipline • creative • persistent •</SpinningText>
+            </div>          
+          </div>    
+          <div>
+          <h1 className="mt-27 text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
+              Rasya
+            <LineShadowText className="italic" shadowColor={shadowColor}>
+              Iskandar
+            </LineShadowText>
+          </h1>
+          <div className="flex flex-wrap items-center justify-center gap-1">
+            <TypingAnimation className="text-base sm:text-xl md:text-2xl">Saya Adalah Seorang</TypingAnimation>
+            <WordRotate className="text-base sm:text-2xl md:text-3xl font-bold text-black dark:text-white" words={["FullStack", "BackEnd", "FrontEnd", "MobileDev"]} />
+          </div>
+            
+          </div>      
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>   
+      
+<div className="min-h-screen w-full p-4 md:p-20 flex items-center justify-center">
+  <div className="w-full max-w-6xl">
+    <h1 className="text-center text-3xl md:text-[52px] font-bold leading-tight tracking-tight font-sans mb-10 dark:text-white">
+      INGIN TAU SAYA?
+    </h1>
+    <div className="w-full flex flex-col md:flex-row gap-5">
+      <div className="w-full md:w-1/3 bg-yellow-200 dark:bg-yellow-400 rounded-2xl"><img src="/profile.jpg" alt='rasya iskandar' className="w-full h-full object-cover rounded-2xl"/></div>
+
+      <div className="w-full md:w-2/3 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md p-6 md:p-8 text-black dark:text-white text-base md:text-lg leading-relaxed bg-white dark:bg-gray-800 overflow-y-auto max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-700 hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500 transition-all">
+        Hai! Saya Rasya Iskandar, pelajar SMK jurusan Rekayasa Perangkat Lunak yang punya rasa ingin tahu besar di dunia teknologi, desain, dan pengembangan aplikasi. Meskipun masih muda, saya percaya bahwa usia bukan batas untuk mulai berkarya dan belajar.
+        <div className="hidden md:block">
+          <br />
+          Saya terbiasa menggunakan React, Next.js, dan Tailwind CSS untuk pengembangan web, serta sedang aktif mengeksplorasi React Native untuk membangun aplikasi mobile. Bagi saya, teknologi adalah alat untuk menciptakan sesuatu yang berguna.
+          <br /><br />
+          <p className="italic text-gray-700 dark:text-gray-300">
+            Jadi ya... itu saya. Mungkin bukan yang paling pintar, tapi saya selalu mau belajar. Mungkin belum banyak pengalaman, tapi saya jalan terus. Karena buat saya, selama saya nggak berhenti, saya nggak gagal.
+          </p>
+        </div>    
+      </div>    
     </div>
-  );
+  </div>
+</div>
+
+  <div className="hidden md:flex h-70 w-full gap-10 justify-center ">
+    <div className="w-100 h-40  p-3 bg-red-400 rounded-2xl">
+      <div className=''><img src="presentation.svg"/></div>
+      <div className='flex items-center justify-between'>
+        <text className=''>PROJECT</text>
+        <div>6</div>
+      </div>
+    </div> 
+    <div className="w-100 h-20 bg-red-600 rounded-2xl">
+      CERTIFICATE
+    </div>
+    <div className="w-100 h-20 bg-red-900 rounded-2xl">
+      EXPERIENCE
+    </div>
+  </div>
+
+  </div>
+  )
 }
