@@ -3,7 +3,6 @@
 import Navbar from '@/components/Keren/Navbar'
 import { SmoothCursor } from '@/components/ui/smooth-cursor'
 import React, { useEffect, useState } from 'react'
-import { SpinningText } from '@/components/magicui/spinning-text'
 import { LineShadowText } from "@/components/magicui/line-shadow-text"
 import { useTheme } from "next-themes"
 import { TypingAnimation } from '@/components/magicui/typing-animation'
@@ -37,7 +36,6 @@ export default function page() {
                         <img src="/Profile.jpg" alt="Rasya Iskandar" className="w-full h-full object-cover rounded-full"/>
                       </div>            
             <div className='mt-[-120px]'>
-            <SpinningText>Dicipline • creative • persistent •</SpinningText>
             </div>          
           </div>    
           <div>
